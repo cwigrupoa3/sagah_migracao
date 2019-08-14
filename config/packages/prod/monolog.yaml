@@ -1,0 +1,17 @@
+monolog:
+    handlers:
+        error_log:
+            type: rotating_file
+            path: "%kernel.logs_dir%/%kernel.environment%/error.log"
+            level: error
+            channels: ["!event"]
+            max_files: 10
+            excluded_404s:
+                # regex: exclude all 404 errors from the logs
+                - ^/
+
+        info_log:
+            type: rotating_file
+            path: "%kernel.logs_dir%/%kernel.environment%/info.log"
+            level: info
+            max_files: 10
